@@ -1,0 +1,62 @@
+Ce projet utilise l'API LaunchLibrary disponible à l'url suivant: https://launchlibrary.net/1.2/docs/api.html
+Les fichiers javascripts propres au projet sont dans customJS, les fichiers dans assets étaient fournis avec le template.
+
+
+Utilisation d’AngularJS
+
+    Fonctionnalités implémentées:
+
+        controllers
+            NextLaunchDisplayController utilisé dans index.html pour gerer l'affichage des 4 prochains lancements.
+
+        services, factories
+            Utilisation d'une factory dans LaunchQueryService.js pour creer des fonctions de récuperation de données json.
+
+
+        ng-model
+            Utilisé dans upcomingLaunches.html pour gérer les entrées du filtre de recherche.
+
+        ng-if
+
+        ng-show
+            Utilisé dans index.html pour cacher/afficher la description des missions
+
+        ng-repeat
+            Utilisé dans index.html pour afficher les 4 prochains lancements : ng-repeat="launch in NLDisplay.nextLaunches.launches"
+
+        ng-class
+
+        ng-click, ng-submit
+            Utilisé dans index.html en coordination avec ng-show pour cacher/afficher la description des missions
+
+        custom filter
+            Plusieurs filtres presonnalisés dans le module launchDisplayFilters.
+            limitAndEllipse: Limite le nombre de characteres affichés et ajoute " ..." s'il est dépassé.
+
+    Fonctionnalités additionnelles:
+
+        ng-src
+            Utilisé dans index.html pour afficher une image spécifique pour chaque type de mission et une icone spécifique au pays où se déroule le lancement.
+
+
+
+BONUS: Vous pouvez créer votre propre directive.
+
+Style & Design (5pts)
+
+        Votre site web doit être personnalisé et unique, vous êtes donc libre de créer votre propre design avec votre touche personnelle. Ce site web sera cependant évalué en terme d’esthétique et en cohésion avec le but de votre application.
+
+        Bootstrap est une solution clef en main pour créer un style de base, vous ne pourrez pas vous limiter à l’utilisation de cet outil et devrez utiliser vos propres média-queries et style. Vous pouvez utiliser d’autres librairies (javascript ou css).
+
+        Inspirez vous des conventions de Material Design de Google, lisez cette documentation : http://www.google.com/design/spec/material-design/introduction.html
+
+        En gros, on a des border-radius légers sur la plupart des box, avec une ombre relative à la “hauteur” que l’on veut donner à l’élément. Plus l’élément est censé être “près” de nous plus l’ombre sera forte. Mais pleins d’autres conventions se trouvent dans ce document.
+Responsiveness (5pts)
+
+        Votre application doit être utilisable sur tout type d’appareil, allant d’un ordinateur de bureau à un téléphone portable (largeur min : 320px). Pour cela vous devrez faire en sorte d’optimiser l’affichage des informations en fonction de la cible.
+
+
+
+Sous Firefox, Ctrl+Shift+M pour afficher l’outil de responsive design.
+
+        Vous devrez fournir des ressources images adaptées au support ainsi qu’un menu spécifique pour mobile.
