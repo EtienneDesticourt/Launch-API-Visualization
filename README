@@ -1,5 +1,5 @@
 Ce projet utilise l'API LaunchLibrary disponible à l'url suivant: https://launchlibrary.net/1.2/docs/api.html
-Les fichiers javascripts propres au projet sont dans customJS, les fichiers dans assets étaient fournis avec le template.
+Les fichiers javascripts et CSS propres au projet sont dans customJS et customCSS, les fichiers dans assets étaient fournis avec le template.
 
 
 Utilisation d’AngularJS
@@ -7,27 +7,26 @@ Utilisation d’AngularJS
     Fonctionnalités implémentées:
 
         controllers
-            NextLaunchDisplayController utilisé dans index.html pour gerer l'affichage des 4 prochains lancements.
+            LaunchDisplayController utilisé dans index.html pour gerer l'affichage des 4 prochains lancements.
 
         services, factories
             Utilisation d'une factory dans LaunchQueryService.js pour creer des fonctions de récuperation de données json.
 
-
         ng-model
             Utilisé dans upcomingLaunches.html pour gérer les entrées du filtre de recherche.
 
-        ng-if
-
-        ng-show
-            Utilisé dans index.html pour cacher/afficher la description des missions
+        ng-if, ng-show
+            Utilisé dans index.html pour cacher/afficher la description des missions.
 
         ng-repeat
             Utilisé dans index.html pour afficher les 4 prochains lancements : ng-repeat="launch in NLDisplay.nextLaunches.launches"
 
         ng-class
+            Utilisé dans upcomingLaunches.html pour ajouter une bordure lorsqu'un lancement est séléctionné.
 
         ng-click, ng-submit
-            Utilisé dans index.html en coordination avec ng-show pour cacher/afficher la description des missions
+            Utilisé dans index.html en coordination avec ng-show pour cacher/afficher la description des missions.
+            Utilisé dans upcomingLaunches.html pour sélectionner un lancement et pour lancer une recherche.
 
         custom filter
             Plusieurs filtres presonnalisés dans le module launchDisplayFilters.

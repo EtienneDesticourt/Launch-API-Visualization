@@ -11,6 +11,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="customCSS/main.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 	</head>
 	<body class="subpage" ng-app="spaceLaunches">
@@ -28,7 +29,7 @@
 								<!-- Nav -->
 									<nav id="nav">
 										<a href="index.html">Homepage</a>
-										<a href="upcomingLaunches.html">Upcoming Launches</a>
+										<a class="current" href="upcomingLaunches.html">Upcoming Launches</a>
 										<a href="twocolumn1.html">Launch History</a>
 										<a href="twocolumn2.html">Rockets</a>
 										<a href="onecolumn.html">Back On Earth</a>
@@ -43,7 +44,7 @@
 				<div id="content-wrapper">
 					<div id="content">
 						<div class="container">
-							<div class="row">
+							<div class="row" ng-controller="LaunchDisplayController as LD">
 								<div class="3u 12u(mobile)">
 
 									<!-- Sidebar -->
@@ -53,16 +54,30 @@
 											<header>
 												<h2>Filter Launches</h2>
 											</header>
-											Name:
-											<input ng-model="name"></input>
-											Agency:
-											<select ng-model="invoice.inCurr">
-										      <option ng-repeat="c in invoice.currencies">{{c}}</option>
-										    </select>
-										    From:										    
-											<input ng-model="start">yyyy-mm-dd</input>
-										    To:										    
-											<input ng-model="end">yyyy-mm-dd</input>
+
+											<form class="user-form">
+											    <div class="field">
+													<label for="name">Name:</label>
+													<input ng-model="LD.name" name="name" type="text" size="20" autofocus></input> 
+											    </div>
+											    <div class="field">
+													<label for="agency">Agency: </label>
+													<select ng-model="LD.agency" name="agency"> 
+												      <option ng-repeat="a in LD.agencies">{{c}}</option>
+												    </select>
+											    </div>
+											    <div class="field">
+												    <label for="start">From:</label>									    
+													<input ng-model="LD.start" name="start"></input>													
+											    </div>
+											    <div class="field">	
+													<label for="end">To:</label>							    
+													<input ng-model="LD.end" name="end"></input>
+											    </div>
+											    <div class="field">
+											    	<button class="button-small" ng-click="LD.search()">Search</button>
+											    </div>
+											<form>
 										</section>
 
 										<!-- Rocket info -->
@@ -70,16 +85,26 @@
 											<header>
 												<h2>The rocket</h2>
 											</header>
-											<p>
-												Vehicula fermentum ligula at pretium. Suspendisse semper iaculis eros, eu aliquam
-												iaculis. Phasellus ultrices diam sit amet orci lacinia sed consequat.
+											<p ng-if="!LD.selectedLaunch">
+												Please select a launch to see rocket information.
 											</p>
-											<ul class="link-list">
-												<li><a href="#">Sed dolore viverra</a></li>
-												<li><a href="#">Ligula non varius</a></li>
-												<li><a href="#">Dis parturient montes</a></li>
-												<li><a href="#">Nascetur ridiculus</a></li>
-											</ul>
+											<div ng-if="LD.selectedLaunch">
+
+												Name: <strong> {{ LD.selectedLaunch.rocket.name }} </strong> <br>
+												Family : <strong> {{ LD.selectedLaunch.rocket.familyname }} </strong> <br>
+												<!--<img href="{{ currentRocket.imageUrl }}"/>-->
+												<div ng-show="LD.selectedLaunch.rocket.agencies">
+													Agencies: <br>
+													<ul>
+														<li class="agency" ng-repeat="agency in LD.selectedLaunch.rocket.agencies">
+															{{ agency.abbrev }}
+															
+														</li>
+													</ul>
+												</div>
+
+											</div>
+
 										</section>
 
 								</div>
@@ -88,55 +113,34 @@
 									<!-- Main Content -->
 										<section>
 											<header>
-												<h2>Two Column #2</h2>
-												<h3>Another generic two column layout</h3>
+												<h2>Upcoming Launches</h2>
 											</header>
-											<p>
-												Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam metus, congue
-												vel suscipit ut, dignissim non risus. Vestibulum ante est, fringilla nec placerat
-												eu, vestibulum vitae diam. Integer eget egestas eros. Duis enim erat, mollis quis
-												lacinia eget, blandit nec ipsum. Donec vitae turpis ipsum. Aliquam mauris libero,
-												sagittis in eleifend at, mattis imperdiet velit. Donec urna risus, rutrum molestie
-												varius ac, lacinia sit amet augue. Nam ultrices elementum eros.
-											</p>
-											<p>
-												Sed faucibus viverra ligula, non varius magna semper vitae. Donec eu justo ut ipsum
-												hendrerit congue nec eu risus. Cum sociis natoque penatibus et magnis dis parturient
-												montes, nascetur ridiculus mus. Lorem ipsum dolor sit amet, consectetur adipiscing
-												egestas tempus. Cras convallis odio sit amet risus convallis porttitor. Integer
-												vehicula fermentum ligula at pretium. Suspendisse semper iaculis eros, eu aliquam
-												justo imperdiet vel. Proin nec dictum mi. Duis commodo enim non tellus interdum
-												elit. Suspendisse fermentum adipiscing nisi, a tempor libero malesuada at. Morbi
-												lacinia dui adipiscing risus eleifend tincidunt. Proin eu mauris eu tellus eleifend
-												hendrerit.
-											</p>
-											<p>
-												Mauris sit amet tellus urna. In facilisis, tortor vitae ultricies egestas, odio
-												mi rhoncus arcu, quis euismod felis felis et velit. Mauris varius consectetur erat
-												egestas tempus. Cras convallis odio sit amet risus convallis porttitor. Integer
-												vehicula fermentum ligula at pretium. Suspendisse semper iaculis eros, eu aliquam
-												justo imperdiet vel. Proin nec dictum mi. Duis commodo enim non tellus interdum
-												iaculis. Phasellus ultrices diam sit amet orci lacinia sed consequat dui auctor.
-											</p>
-											<p>
-												Sed faucibus viverra ligula, non varius magna semper vitae. Donec eu justo ut ipsum
-												hendrerit congue nec eu risus. Cum sociis natoque penatibus et magnis dis parturient
-												montes, nascetur ridiculus mus. Lorem ipsum dolor sit amet, consectetur adipiscing
-												egestas tempus. Cras convallis odio sit amet risus convallis porttitor. Integer
-												vehicula fermentum ligula at pretium. Suspendisse semper iaculis eros, eu aliquam
-												justo imperdiet vel. Proin nec dictum mi. Duis commodo enim non tellus interdum
-												elit. Suspendisse fermentum adipiscing nisi, a tempor libero malesuada at. Morbi
-												lacinia dui adipiscing risus eleifend tincidunt. Proin eu mauris eu tellus eleifend
-												hendrerit.
-											</p>
-											<p>
-												Mauris sit amet tellus urna. In facilisis, tortor vitae ultricies egestas, odio
-												mi rhoncus arcu, quis euismod felis felis et velit. Mauris varius consectetur erat
-												egestas tempus. Cras convallis odio sit amet risus convallis porttitor. Integer
-												vehicula fermentum ligula at pretium. Suspendisse semper iaculis eros, eu aliquam
-												justo imperdiet vel. Proin nec dictum mi. Duis commodo enim non tellus interdum
-												iaculis. Phasellus ultrices diam sit amet orci lacinia sed consequat dui auctor.
-											</p>
+											
+											<article class="ng-class:  launch != LD.selectedLaunch? 'launchArticle' : 'launchArticleSelected' " ng-repeat="launch in LD.nextLaunches.launches" ng-click="LD.select(launch)">
+												<h2 class="launchName">
+													{{ launch.name }}
+												</h2>
+
+												<img class="bordered-feature-image" ng-src="images\\missions\\{{ launch.missions[0].type - 1 }}.jpg" alt="Mission: {{ launch.missions[0].typeName }}" ng-show="launch.missions"/>
+												<img class="bordered-feature-image" ng-src="images\\missions\\8.jpg" alt="Mission: Unknown" ng-show="launch.missions.length == 0"/>
+
+
+												<div class="launchDate">
+													Launching on: <strong> {{ launch.windowstart }} </strong>
+												</div>
+												<div class="launchLocation">
+													at <strong> {{ launch.location.name }} (<img ng-src="images\\flagIcons\\{{ LD.convertCountryCode(launch.location.countryCode) }}.png" alt="Country: {{ launch.location.countryCode }}"/>) </strong>
+												</div>
+												<div class="launchMission" ng-show="launch.missions">
+													Mission: <strong> {{ launch.missions[0].name }} </strong> <br>
+													{{ launch.missions[0].description }}
+												</div>
+												<div class="launchMission" ng-show="launch.missions.length == 0">
+													Mission: Unknown
+												</div>
+											</article>
+
+
 										</section>
 
 								</div>
@@ -159,8 +163,9 @@
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
+			<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>	
 			<script src="customJS/LaunchQueryService.js"></script>
-			<script src="customJS/NextLaunchDisplayController.js"></script>		
+			<script src="customJS/LaunchDisplayController.js"></script>		
 			<script src="customJS/LaunchDisplayFilters.js"></script>
 
 	</body>
