@@ -26,7 +26,7 @@ Utilisation d’AngularJS
 
         ng-click, ng-submit
             Utilisé dans index.html en coordination avec ng-show pour cacher/afficher la description des missions.
-            Utilisé dans upcomingLaunches.html pour sélectionner un lancement et pour lancer une recherche.
+            Utilisé dans upcomingLaunches.html pour sélectionner un lancement, pour lancer une recherche et pour reseter la page.
 
         custom filter
             Plusieurs filtres presonnalisés dans le module launchDisplayFilters.

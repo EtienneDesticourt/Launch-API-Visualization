@@ -1,13 +1,14 @@
 angular.module('launchAPI', [])
 .factory('launchDataFetcher', ['$http', function($http) {
-  var LAUNCH_LIBRARY_ROOT_URL = "https://launchlibrary.net/1.2/";
-  var LAUNCH_LIBRARY_NEXT_EXT = "launch/next/";
+  var LAUNCH_LIBRARY_ROOT_URL = "https://launchlibrary.net/1.2/launch";
+  var LAUNCH_LIBRARY_NEXT_EXT = "/next/";
 
   var getNextLaunches = function (numLaunches) {
     var url = LAUNCH_LIBRARY_ROOT_URL + LAUNCH_LIBRARY_NEXT_EXT + numLaunches.toString();
-    var obj = {launches:null};
+    var obj = {launches:null, total:null};
     $http.get(url).success(function(data) {
-      obj.launches = data.launches;      
+      obj.launches = data.launches; 
+      obj.total = data.total;     
     });
 
     return obj;
@@ -21,14 +22,15 @@ angular.module('launchAPI', [])
      return ret.join("&");
   };
 
-  var getNextFilteredLaunches = function (numLaunches, args) {    
-    var url = LAUNCH_LIBRARY_ROOT_URL + LAUNCH_LIBRARY_NEXT_EXT + numLaunches.toString();
-    url = url + "?" + EncodeQueryData(args);
+  var getNextFilteredLaunches = function (args) {    
+    var url = LAUNCH_LIBRARY_ROOT_URL;
+    url += "?" + EncodeQueryData(args);
     console.log(url);
-    return;
-    var obj = {launches:null};
+
+    var obj = {launches:null, total:null};
     $http.get(url).success(function(data) {
-      obj.launches = data.launches;      
+      obj.launches = data.launches;   
+      obj.total = data.total;   
     });
 
     return obj;

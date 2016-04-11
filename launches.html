@@ -29,7 +29,7 @@
 								<!-- Nav -->
 									<nav id="nav">
 										<a href="index.html">Homepage</a>
-										<a class="current" href="upcomingLaunches.html">Upcoming Launches</a>
+										<a class="current" href="launches.html">Upcoming Launches</a>
 										<a href="twocolumn1.html">Launch History</a>
 										<a href="twocolumn2.html">Rockets</a>
 										<a href="onecolumn.html">Back On Earth</a>
@@ -61,12 +61,6 @@
 													<input ng-model="LD.name" name="name" type="text" size="20" autofocus></input> 
 											    </div>
 											    <div class="field">
-													<label for="agency">Agency: </label>
-													<select ng-model="LD.agency" name="agency"> 
-												      <option ng-repeat="a in LD.agencies">{{c}}</option>
-												    </select>
-											    </div>
-											    <div class="field">
 												    <label for="start">From:</label>									    
 													<input ng-model="LD.start" name="start"></input>													
 											    </div>
@@ -76,6 +70,9 @@
 											    </div>
 											    <div class="field">
 											    	<button class="button-small" ng-click="LD.search()">Search</button>
+											    </div>
+											    <div class="field">
+											    	<button class="button-small" ng-click="LD.clear()">Clear</button>
 											    </div>
 											<form>
 										</section>
@@ -121,8 +118,8 @@
 													{{ launch.name }}
 												</h2>
 
-												<img class="bordered-feature-image" ng-src="images\\missions\\{{ launch.missions[0].type - 1 }}.jpg" alt="Mission: {{ launch.missions[0].typeName }}" ng-show="launch.missions"/>
-												<img class="bordered-feature-image" ng-src="images\\missions\\8.jpg" alt="Mission: Unknown" ng-show="launch.missions.length == 0"/>
+												<img class="bordered-feature-image" ng-src="images\\missions\\{{ launch.missions[0].type - 1 }}.jpg" alt="Mission: {{ launch.missions[0].typeName }}" ng-show="launch.missions" title="Mission: {{ launch.missions[0].typeName }}"/>
+												<img class="bordered-feature-image" ng-src="images\\missions\\8.jpg" alt="Mission: Unknown" ng-show="launch.missions.length == 0" title="Mission: Unknown"/>
 
 
 												<div class="launchDate">
@@ -139,6 +136,10 @@
 													Mission: Unknown
 												</div>
 											</article>
+
+											<span ng-repeat="p in LD.pageRange">
+												{{p}}
+											</span>
 
 
 										</section>

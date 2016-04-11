@@ -29,7 +29,7 @@
 								<!-- Nav -->
 									<nav id="nav">
 										<a class="current" href="index.html">Homepage</a>
-										<a href="upcomingLaunches.html">Upcoming Launches</a>
+										<a href="launches.html">Upcoming Launches</a>
 										<a href="twocolumn1.html">Launch History</a>
 										<a href="twocolumn2.html">Rockets</a>
 										<a href="onecolumn.html">Back On Earth</a>
@@ -70,14 +70,14 @@
 
 									<!-- Feature #1 -->
 										<section>
-											<a href="#" class="bordered-feature-image"><img ng-src="images\\missions\\{{ launch.missions[0].type - 1 }}.jpg" alt="Mission: {{ launch.missions[0].typeName }}" /></a>
-											<h2 alt="{{ launch.name }}">{{ launch.name | limitAndEllipse : 30 }}</h2>
+											<a href="#" class="bordered-feature-image"><img ng-src="images\\missions\\{{ launch.missions[0].type - 1 }}.jpg" alt="Mission: {{ launch.missions[0].typeName }}" title="Mission: {{ launch.missions[0].typeName }}"/></a>
+											<h2 title="{{ launch.name }}">{{ launch.name | limitAndEllipse : 30 }}</h2>
 											<p>
 												Launching on <strong>{{ launch.windowstart }}</strong> 
 												<br>
 												at <strong> {{ launch.location.name }} 
 												(<img ng-src="images\\flagIcons\\{{ LD.convertCountryCode(launch.location.countryCode) }}.png" 
-													  alt="Country: {{ launch.location.countryCode }}" />)
+													  alt="Country: {{ launch.location.countryCode }}"/>)
 												</strong>																						
 												<span ng-show="show"> <br> Mission: <strong> {{ launch.missions[0].description }} </strong> </span> 
 												<br>
