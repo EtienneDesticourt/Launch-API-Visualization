@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Upcoming Launches</title>
+		<title>Launches - Space Launch Forecast</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -24,15 +24,13 @@
 							<div class="12u">
 
 								<!-- Logo -->
-									<h1><a href="#" id="logo">Upcoming Launches</a></h1>
+									<h1><a href="#" id="logo">Launches</a></h1>
 
 								<!-- Nav -->
 									<nav id="nav">
 										<a href="index.html">Homepage</a>
-										<a class="current" href="launches.html">Upcoming Launches</a>
-										<a href="twocolumn1.html">Launch History</a>
-										<a href="twocolumn2.html">Rockets</a>
-										<a href="onecolumn.html">Back On Earth</a>
+										<a class="current" href="launches.html">Launches</a>
+										<a href="map.html">Map</a>
 									</nav>
 
 							</div>
@@ -113,6 +111,12 @@
 												<h2>Upcoming Launches</h2>
 											</header>
 											
+											<div class="pages">
+												<span class="page" ng-click="LD.getPage(p)" ng-repeat="p in LD.nextLaunches.pages">
+													{{p}}
+												</span>
+											</div>
+											
 											<article class="ng-class:  launch != LD.selectedLaunch? 'launchArticle' : 'launchArticleSelected' " ng-repeat="launch in LD.nextLaunches.launches" ng-click="LD.select(launch)">
 												<h2 class="launchName">
 													{{ launch.name }}
@@ -137,10 +141,11 @@
 												</div>
 											</article>
 
-											<span ng-repeat="p in LD.pageRange">
-												{{p}}
-											</span>
-
+											<div class="pages">
+												<span class="page" ng-click="LD.getPage(p)" ng-repeat="p in LD.nextLaunches.pages">
+													{{p}}
+												</span>
+											</div>
 
 										</section>
 
@@ -164,7 +169,12 @@
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
-			<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>	
+			<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
+			<script src="//maps.googleapis.com/maps/api/js?sensor=false"></script>	
+			<script src="https://cdn.jsdelivr.net/lodash/4.10.0/lodash.min.js"></script>	
+			<script src="libs/angular-simple-logger.js"></script>	
+			<script src="libs/angular-google-maps.min.js"></script>		
+			<script src="customJS/spaceLaunchApp.js"></script>
 			<script src="customJS/LaunchQueryService.js"></script>
 			<script src="customJS/LaunchDisplayController.js"></script>		
 			<script src="customJS/LaunchDisplayFilters.js"></script>

@@ -1,0 +1,1 @@
+angular.module('spaceLaunches', ['launchAPI', 'launchDisplayFilters', 'uiGmapgoogle-maps']);

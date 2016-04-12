@@ -1,5 +1,5 @@
-angular.module('spaceLaunches', ['launchAPI', 'launchDisplayFilters'])
-.controller('LaunchDisplayController', ['launchDataFetcher', function(launchDataFetcher) {
+angular.module('spaceLaunches')
+.controller('LaunchDisplayController', function(launchDataFetcher) {
   this.DEFAULT_NUM_LAUNCH = 10;
   this.selectedLaunch = null;
   this.nextLaunches = null;
@@ -31,20 +31,12 @@ angular.module('spaceLaunches', ['launchAPI', 'launchDisplayFilters'])
     }
   }
 
-  this.setPageNumber = function setPageNumber(){
-    this.pageNumber = this.nextLaunches.total / this.DEFAULT_NUM_LAUNCH + 1;
-    if (this.pageNumber > 1){
-      this.pageRange = [];
-      for (var i=1; i <= this.pageNumber; i++){
-        this.pageRange.push(i)
-      }  
-    }
-    
-    console.log(this.pageNumber);
+  this.getPage = function getPage(offset){
+    this.nextLaunches = launchDataFetcher.getLaunchPage(offset);
   }
 
   this.clear = function clear(){    
-    this.nextLaunches = launchDataFetcher.getNextLaunches(this.DEFAULT_NUM_LAUNCH);
+    this.init();
   }
 
   this.select = function select(launch) {
@@ -57,4 +49,4 @@ angular.module('spaceLaunches', ['launchAPI', 'launchDisplayFilters'])
 
 
   this.init();
-}]);
+});
