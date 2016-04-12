@@ -1,4 +1,4 @@
 angular.module('spaceLaunches')
 .factory('launchAPICache', function($cacheFactory) {
-  return $cacheFactory('launches');
+  return $cacheFactory('rockets');
 });

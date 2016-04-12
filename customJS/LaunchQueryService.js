@@ -4,7 +4,8 @@ angular.module('launchAPI', [])
   var TOTAL_NUM_LAUNCH        = 1000;
   var LAUNCH_LIBRARY_NEXT_EXT = "/next/";
   var DEFAULT_LAUNCH_LIMIT    = 10;
-  this.lastQuery = null;
+  this.lastQuery = null;  
+  //this.cache = $cacheFactory('rocketImageCache');
   
 
   this.EncodeQueryData = function (data)
@@ -14,6 +15,10 @@ angular.module('launchAPI', [])
         ret.push(encodeURIComponent(d) + "=" + encodeURIComponent(data[d]));
      return ret.join("&");
   };
+
+  this.getRocketImage = function(id, url, size) {
+    this.cache.get(id);
+  }
 
   this.getNextFilteredLaunches = function (args) {    
     this.lastQuery = args;

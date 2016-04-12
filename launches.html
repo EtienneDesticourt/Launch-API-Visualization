@@ -87,7 +87,6 @@
 
 												Name: <strong> {{ LD.selectedLaunch.rocket.name }} </strong> <br>
 												Family : <strong> {{ LD.selectedLaunch.rocket.familyname }} </strong> <br>
-												<!--<img href="{{ currentRocket.imageUrl }}"/>-->
 												<div ng-show="LD.selectedLaunch.rocket.agencies">
 													Agencies: <br>
 													<ul>
@@ -96,6 +95,10 @@
 															
 														</li>
 													</ul>
+												</div>
+												<div ng-show="LD.selectedLaunch.rocket.imageURL.indexOf('placeholder') == -1">
+													<img class="rocket-image"
+														 ng-src="{{ LD.selectedLaunch.rocket.imageURL | formatRocketUrl:LD.selectedLaunch.rocket.imageSizes[0] }}"/>
 												</div>
 
 											</div>
@@ -107,9 +110,6 @@
 
 									<!-- Main Content -->
 										<section>
-											<header>
-												<h2>Upcoming Launches</h2>
-											</header>
 											
 											<div class="pages">
 												<span class="page" ng-click="LD.getPage(p)" ng-repeat="p in LD.nextLaunches.pages">

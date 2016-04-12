@@ -8,5 +8,11 @@ angular.module('launchDisplayFilters', [])
   		return input;
   	}
   };
+})
+.filter('formatRocketUrl', function() {
+	return function(input, size) {
+		var baseurl = input.split("_")[0];
+		return baseurl + "_" + size + ".jpg";
+	}
 });
 
