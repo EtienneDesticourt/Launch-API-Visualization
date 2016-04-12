@@ -59,16 +59,39 @@
 
 											<ui-gmap-google-map center='Map.center' zoom='Map.zoom'>
 
-												<span ng-repeat="launch in Map.allLaunches.launches">
+												<span ng-repeat="pad in Map.pads.allPads">
 												<ui-gmap-marker
-												        idKey='launch.id'
-												        coords='launch.location.pads[0]'
-												        options="Map.marker.options"
+												        idKey='pad.id'
+												        coords='pad'
+												        click='selectPad(pad)'
+												        options= "{icon: Map.marker.options.icon,
+												        		   visible: !pad.retired}"
 												        >
 												</ui-gmap-marker>
 											</span>
 
 											</ui-gmap-google-map>
+
+										</section>
+
+
+
+										<section ng-show="selectedPad">
+											<header>
+												<h2>Launchpad</h2>
+												<h3>{{ selectedPad.name }}</h3>
+											</header>
+
+											Latitude: {{ selectedPad.latitude }}
+											<br>
+											Longitude: {{ selectedPad.longitude }}
+											<hr>
+											<h3 ng-show="selectedPad.agencies"> Agencies that use this pad: </h3>
+											<ul>
+											<li ng-show="selectedPad.agencies" ng-repeat="agency in selectedPad.agencies">
+													{{agency.name}}													
+											</li>
+											</ul>
 
 										</section>
 

@@ -1,9 +1,13 @@
 angular.module('launchAPI', [])
-.service('launchDataFetcher', ['$http', function($http) {
-  var LAUNCH_LIBRARY_ROOT_URL = "https://launchlibrary.net/1.2/launch";
+.service('launchDataFetcher', ['$http', '$cacheFactory', function($http, $cacheFactory) {
+  var LAUNCH_LIBRARY_ROOT_URL = "https://launchlibrary.net/1.2/";
+  var LAUNCH_LIBRARY_LAUCH_EXT = "launch";
+  var LAUNCH_LIBRARY_ALLPADS_EXT = "pad?mode=verbose&limit=200";
+
   var TOTAL_NUM_LAUNCH        = 1000;
   var LAUNCH_LIBRARY_NEXT_EXT = "/next/";
   var DEFAULT_LAUNCH_LIMIT    = 10;
+  var cache = $cacheFactory("padCache");
   this.lastQuery = null;  
   //this.cache = $cacheFactory('rocketImageCache');
   
@@ -16,13 +20,18 @@ angular.module('launchAPI', [])
      return ret.join("&");
   };
 
-  this.getRocketImage = function(id, url, size) {
-    this.cache.get(id);
+  this.getAllPads = function () {
+    var url = LAUNCH_LIBRARY_ROOT_URL + LAUNCH_LIBRARY_ALLPADS_EXT;
+    var obj = {allPads:null};
+    $http.get(url, { cache: true}).success(function(data) {
+      obj.allPads = data.pads;
+    });
+    return obj;
   }
 
   this.getNextFilteredLaunches = function (args) {    
     this.lastQuery = args;
-    var url = LAUNCH_LIBRARY_ROOT_URL;
+    var url = LAUNCH_LIBRARY_ROOT_URL + LAUNCH_LIBRARY_LAUCH_EXT;
     url += "?" + this.EncodeQueryData(args);
     console.log(url);
 
@@ -62,8 +71,5 @@ angular.module('launchAPI', [])
     var url = LAUNCH_LIBRARY_ROOT_URL;
     var args = {"startdate": "2015-01-01", "mode": "verbose", "limit": 30};
     return this.getNextFilteredLaunches(args);
-  }
-
-  
+  }  
 }]);
-
