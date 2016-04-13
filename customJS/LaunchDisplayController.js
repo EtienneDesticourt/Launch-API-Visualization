@@ -4,7 +4,7 @@ angular.module('spaceLaunches')
   this.nextLaunches = null;
   this.pageNumber = 0;
   this.pageRange = [];
-  //Init models
+  //Init form inputs' ng-models
   this.name = "";
   this.start = "YYYY-MM-DD";
   this.end = "YYYY-MM-DD";

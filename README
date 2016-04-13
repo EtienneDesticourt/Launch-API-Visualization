@@ -7,55 +7,40 @@ Utilisation d’AngularJS
     Fonctionnalités implémentées:
 
         controllers
-            LaunchDisplayController utilisé dans index.html pour gerer l'affichage des 4 prochains lancements.
+            launchDisplayController utilisé dans index.html et launches.html pour gerer l'affichage des lancements.
+            mapController utilisé dans map.html pour gerer l'affichage de la google maps.
 
         services, factories
-            Utilisation d'une factory dans LaunchQueryService.js pour creer des fonctions de récuperation de données json.
+            launchQueryService pour gerer la récuperation de données json.
 
         ng-model
-            Utilisé dans upcomingLaunches.html pour gérer les entrées du filtre de recherche.
+            Utilisé dans launches.html pour gérer les entrées du filtre de recherche.
 
         ng-if, ng-show
             Utilisé dans index.html pour cacher/afficher la description des missions.
 
         ng-repeat
-            Utilisé dans index.html pour afficher les 4 prochains lancements : ng-repeat="launch in NLDisplay.nextLaunches.launches"
+            Utilisé dans index.html, launches.html pour afficher les lancements.
 
         ng-class
-            Utilisé dans upcomingLaunches.html pour ajouter une bordure lorsqu'un lancement est séléctionné.
+            Utilisé dans launches.html pour changer la classe css et ajouter une bordure lorsqu'un lancement est séléctionné.
 
         ng-click, ng-submit
             Utilisé dans index.html en coordination avec ng-show pour cacher/afficher la description des missions.
-            Utilisé dans upcomingLaunches.html pour sélectionner un lancement, pour lancer une recherche et pour reseter la page.
+            Utilisé dans launches.html pour sélectionner un lancement, pour lancer une recherche et pour reseter la page.
 
         custom filter
             Plusieurs filtres presonnalisés dans le module launchDisplayFilters.
             limitAndEllipse: Limite le nombre de characteres affichés et ajoute " ..." s'il est dépassé.
+            formatRocketUrl: Remplace un nombre correspondant à la taille d'une image dans une url par une autre taille.
 
     Fonctionnalités additionnelles:
 
         ng-src
             Utilisé dans index.html pour afficher une image spécifique pour chaque type de mission et une icone spécifique au pays où se déroule le lancement.
 
+        ui-gmap-google-map
+            Utilisé pour afficher une google map.
 
-
-BONUS: Vous pouvez créer votre propre directive.
-
-Style & Design (5pts)
-
-        Votre site web doit être personnalisé et unique, vous êtes donc libre de créer votre propre design avec votre touche personnelle. Ce site web sera cependant évalué en terme d’esthétique et en cohésion avec le but de votre application.
-
-        Bootstrap est une solution clef en main pour créer un style de base, vous ne pourrez pas vous limiter à l’utilisation de cet outil et devrez utiliser vos propres média-queries et style. Vous pouvez utiliser d’autres librairies (javascript ou css).
-
-        Inspirez vous des conventions de Material Design de Google, lisez cette documentation : http://www.google.com/design/spec/material-design/introduction.html
-
-        En gros, on a des border-radius légers sur la plupart des box, avec une ombre relative à la “hauteur” que l’on veut donner à l’élément. Plus l’élément est censé être “près” de nous plus l’ombre sera forte. Mais pleins d’autres conventions se trouvent dans ce document.
-Responsiveness (5pts)
-
-        Votre application doit être utilisable sur tout type d’appareil, allant d’un ordinateur de bureau à un téléphone portable (largeur min : 320px). Pour cela vous devrez faire en sorte d’optimiser l’affichage des informations en fonction de la cible.
-
-
-
-Sous Firefox, Ctrl+Shift+M pour afficher l’outil de responsive design.
-
-        Vous devrez fournir des ressources images adaptées au support ainsi qu’un menu spécifique pour mobile.
+        ui-gmap-marker
+            Utilisé pour afficher les sites de lancement sur la google map.
