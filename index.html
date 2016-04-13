@@ -43,13 +43,18 @@
 
 									<!-- Banner Copy -->
 										<p>The perfection of space flight is one of the biggest challenges for mankind and is currently being pursued by numerous governmental agencies and private companies that each do their part in bringing us closer to the stars.</p>
-										<a href="#" class="button-big">Read more</a>
+										<a href="launches.html" class="button-big">Look at launches</a>
 
 								</div>
 								<div class="6u">
+									<div class="wrapper">
+									    <div class="h_iframe">
+									        <img class="ratio" src="http://placehold.it/16x9"/>
+											<!-- Banner Image -->
+											<iframe  src="https://www.youtube.com/embed/bkZac30P5DM" frameborder="0" allowfullscreen ></iframe>
+									    </div>
+									</div>
 
-									<!-- Banner Image -->
-									<iframe  width="400vw" height="350vw" src="https://www.youtube.com/embed/bkZac30P5DM" frameborder="0" allowfullscreen ></iframe>
 								
 								</div>
 							</div>
@@ -68,8 +73,15 @@
 
 									<!-- Feature #1 -->
 										<section>
-											<a href="#" class="bordered-feature-image"><img ng-src="images\\missions\\{{ launch.missions[0].type - 1 }}.jpg" alt="Mission: {{ launch.missions[0].typeName }}" title="Mission: {{ launch.missions[0].typeName }}"/></a>
-											<h2 title="{{ launch.name }}">{{ launch.name | limitAndEllipse : 30 }}</h2>
+											
+											<a href="#" class="bordered-feature-image">
+												<img ng-src="images\\missions\\{{ launch.missions[0].type - 1 }}.jpg" 
+													 alt="Mission: {{ launch.missions[0].typeName }}" 
+													 title="Mission: {{ launch.missions[0].typeName }}"/>
+											</a>
+											
+											<h2 title="{{ launch.name }}">{{ launch.name | limitAndEllipse:30 }}</h2>
+											
 											<p>
 												Launching on <strong>{{ launch.windowstart }}</strong> 
 												<br>
@@ -77,9 +89,14 @@
 												(<img ng-src="images\\flagIcons\\{{ LD.convertCountryCode(launch.location.countryCode) }}.png" 
 													  alt="Country: {{ launch.location.countryCode }}"/>)
 												</strong>																						
-												<span ng-show="show"> <br> Mission: <strong> {{ launch.missions[0].description }} </strong> </span> 
+												<span ng-show="show"> 
+													<br> Mission: <strong> {{ launch.missions[0].description }} </strong> 
+												</span> 
+
 												<br>
-												<span class="trigger" ng-click="show=!show" style="text-decoration: underline">See mission description</span>
+												<span class="trigger" ng-click="show=!show" style="text-decoration: underline; cursor: pointer">	
+													See mission description
+												</span>
 											</p>
 											
 										</section>
@@ -91,83 +108,10 @@
 					</div>
 				</div>
 
-			<!-- Content -->
-				<div id="content-wrapper">
-					<div id="content">
-						<div class="container">
-							<div class="row">
-								<div class="4u 12u(mobile)">
-
-									<!-- Box #1 -->
-										<section>
-											<header>
-												<h2>Space Related News</h2>
-												<h3>Recent articles</h3>
-											</header>
-											<a href="#" class="feature-image"><img src="images/pic05.jpg" alt="" /></a>
-											<p>
-												Duis neque nisi, dapibus sed mattis quis, rutrum accumsan sed.
-												Suspendisse eu varius nibh. Suspendisse vitae magna eget odio amet mollis
-												justo facilisis quis. Sed sagittis mauris amet tellus gravida lorem ipsum.
-											</p>
-										</section>
-
-								</div>
-								<div class="4u 12u(mobile)">
-
-									<!-- Box #2 -->
-										<section>
-											<header>
-												<h2>The Community</h2>
-												<h3>Recent discussions about Space</h3>
-											</header>
-											<ul class="check-list">
-												<li>Sed mattis quis rutrum accum</li>
-												<li>Eu varius nibh suspendisse lorem</li>
-												<li>Magna eget odio amet mollis justo</li>
-												<li>Facilisis quis sagittis mauris</li>
-												<li>Amet tellus gravida lorem ipsum</li>
-											</ul>
-										</section>
-
-								</div>
-								<div class="4u 12u(mobile)">
-
-									<!-- Box #3 -->
-										<section>
-											<header>
-												<h2>What People Are Saying</h2>
-												<h3>Latest tweets from the Space industry</h3>
-											</header>
-											<ul class="quote-list">
-												<li>
-													<img src="images/pic06.jpg" alt="" />
-													<p>"Neque nisidapibus mattis"</p>
-													<span>Jane Doe, CEO of UntitledCorp</span>
-												</li>
-												<li>
-													<img src="images/pic07.jpg" alt="" />
-													<p>"Lorem ipsum consequat!"</p>
-													<span>John Doe, President of FakeBiz</span>
-												</li>
-												<li>
-													<img src="images/pic08.jpg" alt="" />
-													<p>"Magna veroeros amet tempus"</p>
-													<span>Mary Smith, CFO of UntitledBiz</span>
-												</li>
-											</ul>
-										</section>
-
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
 
 			<!-- Copyright -->
 				<div id="copyright">
-					&copy; Untitled. All rights reserved. | Design: <a href="http://html5up.net">HTML5 UP</a>
+					&copy; Design: <a href="http://html5up.net">HTML5 UP</a>
 				</div>
 
 		</div>

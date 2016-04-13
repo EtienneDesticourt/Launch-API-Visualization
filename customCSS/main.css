@@ -4,14 +4,19 @@
 	color: WHITE;
 }
 
-iframe.video-big {
-	width: 100%;
-	height: 20vw; /* 100/56.25 = 560/315 = 1.778 */
+#header nav {
+	margin-right: 2%;
 }
 
-iframe.video-small {
-	width: 100%;
-	height: 200vw;
+@media screen and (min-width:735px) {
+	.wrapper         {width:80%;height:100%;margin:0 auto;background:#CCC}
+	.h_iframe        {position:relative;}
+	.h_iframe .ratio {display:block;width:100%;height:auto;}
+	.h_iframe iframe {position:absolute;top:0;left:0;width:100%; height:100%;}
+}
+
+@media screen and (max-width:735px) {
+	.wrapper         {display:none;}
 }
 
 /* search filter */
@@ -138,19 +143,6 @@ img.rocket-image {
 	width: 100%;
 }
 
-
-/* slider */
-
-div.slider {
-	width: 100%;
-	height: 5px;
-	background-color: grey;
-}
-
-div.slider-knob {
-	width: 10px;
-	height: 10px;
-}
 
 /* misc */
 

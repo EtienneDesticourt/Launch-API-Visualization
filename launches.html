@@ -60,11 +60,11 @@
 											    </div>
 											    <div class="field">
 												    <label for="start">From:</label>									    
-													<input ng-model="LD.start" name="start"></input>													
+													<input type="date" ng-model="LD.start" name="start"></input>													
 											    </div>
 											    <div class="field">	
 													<label for="end">To:</label>							    
-													<input ng-model="LD.end" name="end"></input>
+													<input type="date" ng-model="LD.end" name="end"></input>
 											    </div>
 											    <div class="field">
 											    	<button class="button-small" ng-click="LD.search()">Search</button>
@@ -77,14 +77,16 @@
 
 										<!-- Rocket info -->
 										<section>
+
 											<header>
 												<h2>The rocket</h2>
 											</header>
+
 											<p ng-if="!LD.selectedLaunch">
 												Please select a launch to see rocket information.
 											</p>
-											<div ng-if="LD.selectedLaunch">
 
+											<div ng-if="LD.selectedLaunch">
 												Name: <strong> {{ LD.selectedLaunch.rocket.name }} </strong> <br>
 												Family : <strong> {{ LD.selectedLaunch.rocket.familyname }} </strong> <br>
 												<div ng-show="LD.selectedLaunch.rocket.agencies">
@@ -92,15 +94,14 @@
 													<ul>
 														<li class="agency" ng-repeat="agency in LD.selectedLaunch.rocket.agencies">
 															{{ agency.abbrev }}
-															
 														</li>
 													</ul>
 												</div>
+												
 												<div ng-show="LD.selectedLaunch.rocket.imageURL.indexOf('placeholder') == -1">
 													<img class="rocket-image"
 														 ng-src="{{ LD.selectedLaunch.rocket.imageURL | formatRocketUrl:LD.selectedLaunch.rocket.imageSizes[0] }}"/>
 												</div>
-
 											</div>
 
 										</section>
@@ -111,31 +112,49 @@
 									<!-- Main Content -->
 										<section>
 											
-											<div class="pages">
-												<span class="page" ng-click="LD.getPage(p)" ng-repeat="p in LD.nextLaunches.pages">
-													{{p}}
-												</span>
-											</div>
-											
-											<article class="ng-class:  launch != LD.selectedLaunch? 'launchArticle' : 'launchArticleSelected' " ng-repeat="launch in LD.nextLaunches.launches" ng-click="LD.select(launch)">
+											<article class="ng-class: launch != LD.selectedLaunch? 'launchArticle' : 'launchArticleSelected' " 
+												 	 ng-repeat="launch in LD.nextLaunches.launches" 
+												 	 ng-click="LD.select(launch)">
+
 												<h2 class="launchName">
 													{{ launch.name }}
 												</h2>
 
-												<img class="bordered-feature-image" ng-src="images\\missions\\{{ launch.missions[0].type - 1 }}.jpg" alt="Mission: {{ launch.missions[0].typeName }}" ng-show="launch.missions" title="Mission: {{ launch.missions[0].typeName }}"/>
-												<img class="bordered-feature-image" ng-src="images\\missions\\8.jpg" alt="Mission: Unknown" ng-show="launch.missions.length == 0" title="Mission: Unknown"/>
+												<img class="bordered-feature-image" 
+													 ng-src="images\\missions\\{{ launch.missions[0].type - 1 }}.jpg" 
+													 alt="Mission: {{ launch.missions[0].typeName }}" 
+													 ng-show="launch.missions" 
+													 title="Mission: {{ launch.missions[0].typeName }}"/>
+
+												<img class="bordered-feature-image" 
+													 ng-src="images\\missions\\8.jpg" 
+													 alt="Mission: Unknown" 
+													 ng-show="launch.missions.length == 0" 
+													 title="Mission: Unknown"/>
 
 
 												<div class="launchDate">
 													Launching on: <strong> {{ launch.windowstart }} </strong>
 												</div>
+
 												<div class="launchLocation">
-													at <strong> {{ launch.location.name }} (<img ng-src="images\\flagIcons\\{{ LD.convertCountryCode(launch.location.countryCode) }}.png" alt="Country: {{ launch.location.countryCode }}"/>) </strong>
+													at 
+													<strong> 
+														{{ launch.location.name }} 
+														(<img ng-src="images\\flagIcons\\{{ LD.convertCountryCode(launch.location.countryCode) }}.png" 
+															  alt="Country: {{ launch.location.countryCode }}"/>) 
+													</strong>
 												</div>
+
 												<div class="launchMission" ng-show="launch.missions">
-													Mission: <strong> {{ launch.missions[0].name }} </strong> <br>
+													Mission: 
+													<strong> 
+														{{ launch.missions[0].name }} 
+													</strong> 
+													<br>
 													{{ launch.missions[0].description }}
 												</div>
+
 												<div class="launchMission" ng-show="launch.missions.length == 0">
 													Mission: Unknown
 												</div>
@@ -157,7 +176,7 @@
 
 			<!-- Copyright -->
 				<div id="copyright">
-					&copy; Untitled. All rights reserved. | Design: <a href="http://html5up.net">HTML5 UP</a>
+					&copy; Design: <a href="http://html5up.net">HTML5 UP</a>
 				</div>
 
 		</div>

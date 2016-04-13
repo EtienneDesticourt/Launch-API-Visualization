@@ -46,15 +46,15 @@
 								<div class="12u">
 
 									<!-- Main Content -->
+
+										<!-- Map Display -->
 										<section>
 											<header>
-												<h2>Launch Map</h2>
+												<h2>Launch pad Map</h2>
 												<h3></h3>
 											</header>
 											<p>
-												This map displays the locations of the launches between the chosen dates, to avoid overloading the API
-												only 20 launches are shown at a time. You can hover over the launch icons to get more
-												information about the launch itself.
+												This map displays the location of all the launch pads that are currently in use. You can click on each launch pad to get its coordinates and the agencies that are using it if they are specified.
 											</p>
 
 											<ui-gmap-google-map center='Map.center' zoom='Map.zoom'>
@@ -65,17 +65,15 @@
 												        coords='pad'
 												        click='selectPad(pad)'
 												        options= "{icon: Map.marker.options.icon,
-												        		   visible: !pad.retired}"
-												        >
+												        		   visible: !pad.retired}">
 												</ui-gmap-marker>
 											</span>
 
 											</ui-gmap-google-map>
-
 										</section>
 
 
-
+										<!-- Launch Pad Display -->
 										<section ng-show="selectedPad">
 											<header>
 												<h2>Launchpad</h2>
@@ -86,13 +84,15 @@
 											<br>
 											Longitude: {{ selectedPad.longitude }}
 											<hr>
-											<h3 ng-show="selectedPad.agencies"> Agencies that use this pad: </h3>
-											<ul>
-											<li ng-show="selectedPad.agencies" ng-repeat="agency in selectedPad.agencies">
-													{{agency.name}}													
-											</li>
-											</ul>
 
+											<div ng-show="selectedPad.agencies">
+												<h3 ng-show="selectedPad.agencies"> Agencies: </h3>
+												<ul>
+													<li ng-repeat="agency in selectedPad.agencies">
+															{{agency.name}}													
+													</li>
+												</ul>
+											</div>
 										</section>
 
 								</div>
@@ -105,7 +105,7 @@
 
 			<!-- Copyright -->
 				<div id="copyright">
-					&copy; Untitled. All rights reserved. | Design: <a href="http://html5up.net">HTML5 UP</a>
+					&copy; Design: <a href="http://html5up.net">HTML5 UP</a>
 				</div>
 
 		</div>
