@@ -2,6 +2,7 @@ Ce projet utilise l'API LaunchLibrary disponible à l'url suivant: https://launc
 Les fichiers javascripts et CSS propres au projet sont dans customJS et customCSS.
 
 
+
 Utilisation d’AngularJS
 
     Fonctionnalités implémentées:
