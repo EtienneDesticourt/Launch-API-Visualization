@@ -8,11 +8,11 @@ Utilisation d’AngularJS
     Fonctionnalités implémentées:
 
         controllers
-            launchDisplayController utilisé dans index.html et launches.html pour gerer l'affichage des lancements.
-            mapController utilisé dans map.html pour gerer l'affichage de la google maps.
+            launchDisplayController utilisé dans index.html et launches.html pour gérer l'affichage des lancements.
+            mapController utilisé dans map.html pour gérer l'affichage de la google maps.
 
         services, factories
-            launchQueryService pour gerer la récuperation de données json.
+            launchQueryService pour gérer la récupération de données json.
 
         ng-model
             Utilisé dans launches.html pour gérer les entrées du filtre de recherche.
@@ -31,14 +31,14 @@ Utilisation d’AngularJS
             Utilisé dans launches.html pour sélectionner un lancement, pour lancer une recherche et pour reseter la page.
 
         custom filter
-            Plusieurs filtres presonnalisés dans le module launchDisplayFilters.
-            limitAndEllipse: Limite le nombre de characteres affichés et ajoute " ..." s'il est dépassé.
+            Plusieurs filtres personnalisés dans le module launchDisplayFilters.
+            limitAndEllipse: Limite le nombre de caractères affichés et ajoute " ..." s'il est dépassé.
             formatRocketUrl: Remplace un nombre correspondant à la taille d'une image dans une url par une autre taille.
 
     Fonctionnalités additionnelles:
 
         ng-src
-            Utilisé dans index.html pour afficher une image spécifique pour chaque type de mission et une icone spécifique au pays où se déroule le lancement.
+            Utilisé dans index.html pour afficher une image spécifique pour chaque type de mission et une icône spécifique au pays où se déroule le lancement.
 
         ui-gmap-google-map
             Utilisé pour afficher une google map.
